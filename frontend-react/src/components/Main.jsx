@@ -1,9 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Button from './Button'
 import { Link } from 'react-router-dom'
+import { AuthContext } from './AuthProvider'
 
 
 const Main = () => {
+
+  const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext)
+
+  const handleLogout = () =>{
+    localStorage.removeItem('accessToken')
+    localStorage.removeItem('refreshToken')
+    setIsLoggedIn(false)
+  }
+
+
   return (
     <>
     
@@ -15,7 +26,14 @@ const Main = () => {
                 libero fugiat debitis rem nesciunt maxime tenetur. Distinctio nisi officia, 
                 explicabo neque, blanditiis maxime perferendis nam voluptatem temporibus vitae impedit.
             </p>
-            <Button text="Login" class="btn-outline-info" url='/login'/>
+            {isLoggedIn ? (
+              <button className="btn btn-outline-info" onClick={handleLogout}>Logout</button>
+          ) : (
+            <>
+              <Button text="Login" class="btn-outline-info" url="/login" />
+             
+            </>
+          )}
         </div>
     </div>
    
