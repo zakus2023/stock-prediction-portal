@@ -138,7 +138,6 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 # SIMPLE JWT
-
 REST_FRAMEWORK = {
     
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -149,8 +148,7 @@ REST_FRAMEWORK = {
 }
 
 # set the expiry time for Access tokens and refresh Tokens
-
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=15),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=10),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }

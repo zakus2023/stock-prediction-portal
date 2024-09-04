@@ -12,5 +12,5 @@ urlpatterns = [
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
     # eg of protected view for testing
-    path('protected-view', UserViews.ProtectedView.as_view()) # go to account/views.py and create a a test view for this url
+    path('protected-view/', UserViews.ProtectedView.as_view()) # go to account/views.py and create a a test view for this url
 ]
