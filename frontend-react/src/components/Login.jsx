@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
 import {useNavigate} from 'react-router-dom'
 import { AuthContext } from "./AuthProvider";
+import axiosInstance from "../axiosinstance";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -27,8 +27,8 @@ const Login = () => {
     try {
       setLoading(true);
 
-      const response = await axios.post(
-        "http://127.0.0.1:8000/api/v1/token/",
+      const response = await axiosInstance.post(
+        "/token/",
         userData
       );
       localStorage.setItem('accessToken', response.data.access)
@@ -79,7 +79,7 @@ const Login = () => {
                   disabled
                 >
                   <FontAwesomeIcon icon={faSpinner} spin />
-                  Please wait
+                   Please wait
                 </button>
               ) : (
                 <button type="submit" className="btn btn-info d-block mx-auto">

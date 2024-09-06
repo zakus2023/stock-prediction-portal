@@ -14,7 +14,7 @@ const Dashboard = () => {
     fetchProtectedData();
   }, []);
 
-  return <div></div>;
+  return <div className="container text-center"><h2 className="text-light">Dashboard</h2></div>;
 };
 
 export default Dashboard;
